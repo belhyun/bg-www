@@ -10,6 +10,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bg.model.Member;
+import com.bg.service.MemberService;
 
 @Controller
 @SessionAttributes("member")
