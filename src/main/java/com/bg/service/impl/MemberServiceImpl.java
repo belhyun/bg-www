@@ -9,15 +9,22 @@ import com.bg.service.MemberService;
 import com.google.common.base.Preconditions;
 
 @Service
-public class MemberServiceImpl implements MemberService{
+public class MemberServiceImpl extends MemberService{
 
 	@Autowired 
 	private MemberDao memberDao;
 	
-	public Member create(Member member) {
+	public Integer create(Member member) {
 		// TODO Auto-generated method stub
 		Preconditions.checkNotNull(member);
-		memberDao.create(member);
+		return memberDao.create(member);
+	}
+
+	public Member findMemberByEmailAndPwd(String email, String pwd) {
+		// TODO Auto-generated method stub
+		Preconditions.checkNotNull(email);
+		Preconditions.checkNotNull(pwd);
+		memberDao.findMemberByEmailAndPwd(email, pwd);
 		return null;
 	}
 }
