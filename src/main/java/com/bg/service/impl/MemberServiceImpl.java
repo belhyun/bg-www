@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bg.dao.MemberDao;
+import com.bg.exception.BgException;
 import com.bg.model.Member;
 import com.bg.service.MemberService;
-import com.google.common.base.Preconditions;
 
 @Service
 public class MemberServiceImpl extends MemberService{
@@ -14,17 +14,13 @@ public class MemberServiceImpl extends MemberService{
 	@Autowired 
 	private MemberDao memberDao;
 	
-	public Integer create(Member member) {
+	public void create(Member member) {
 		// TODO Auto-generated method stub
-		Preconditions.checkNotNull(member);
-		return memberDao.create(member);
+		memberDao.create(member);
 	}
 
-	public Member findMemberByEmailAndPwd(String email, String pwd) {
+	public Member findMemberByEmailAndPwd(String email, String pwd) throws BgException {
 		// TODO Auto-generated method stub
-		Preconditions.checkNotNull(email);
-		Preconditions.checkNotNull(pwd);
-		memberDao.findMemberByEmailAndPwd(email, pwd);
-		return null;
+		return memberDao.findByEmailAndPwd(email, pwd);
 	}
 }
