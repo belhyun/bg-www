@@ -1,6 +1,7 @@
 package com.bg.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.bg.dao.MemberDao;
@@ -14,7 +15,7 @@ public class MemberServiceImpl extends MemberService{
 	@Autowired 
 	private MemberDao memberDao;
 	
-	public void create(Member member) {
+	public void create(Member member) throws DataAccessException, BgException {
 		// TODO Auto-generated method stub
 		memberDao.create(member);
 	}

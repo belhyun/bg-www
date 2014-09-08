@@ -29,6 +29,7 @@
 	
 	<beans:import resource="controllers.xml" />
 	<beans:import resource="hibernate-config.xml"/>
+	<beans:import resource="google-config.xml"/>
 	
 	<task:annotation-driven />
 	

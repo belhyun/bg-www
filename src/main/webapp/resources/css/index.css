@@ -1,0 +1,15 @@
+#wrap{
+	position:relative;
+	min-height:100%;
+	overflow: hidden;
+}
+#container{
+	width:768px;
+	margin:0 auto;
+}
+#container #auth-button{
+	margin-top: 10px;
+}
+#email{
+	margin:0 0 10px;
+}

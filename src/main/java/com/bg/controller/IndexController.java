@@ -33,11 +33,13 @@ public class IndexController {
 	
 	@RequestMapping(value = "/signup", method=RequestMethod.POST)
 	public ModelAndView signup(Model model){
+		
 		return new ModelAndView("/home");
 	}
 	
 	@RequestMapping(value = "/signin", method=RequestMethod.POST)
 	public ModelAndView signin(Model model){
+		
 		return new ModelAndView("/home");
 	}
 }

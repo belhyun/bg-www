@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -19,13 +20,13 @@ public class MemberServiceImplTest {
 	private MemberService memberService;
 	
 	@Test
-	public void 멤버_생성_성공(){
+	public void 멤버_생성_성공() throws DataAccessException, BgException{
 		Member member = createMember();
 		memberService.create(member);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void 멤버_생성_실패(){
+	public void 멤버_생성_실패() throws DataAccessException, BgException{
 		memberService.create(null);
 	}
 	
