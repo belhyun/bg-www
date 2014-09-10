@@ -1,0 +1,12 @@
+#wrap{
+	position:relative;
+	min-height:100%;
+	overflow: hidden;
+}
+#container{
+	width:768px;
+	margin:0 auto;
+}
+.controls{
+	display:inline-block;
+}

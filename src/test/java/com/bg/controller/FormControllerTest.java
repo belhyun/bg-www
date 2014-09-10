@@ -23,11 +23,17 @@ public class FormControllerTest {
 	@Test
 	public void 구글맵API에_장소정보_요청하기_성공(){
 		String searchQuery = "신림고등학교";
+		
 		Map<String, String> vars = new HashMap<String, String>();
 		vars.put("query",searchQuery);
 		vars.put("sensor", "false");
 		vars.put("key",getApiKey());
-		Assert.assertEquals(restTemplate.getForObject(getGoogleSearchUrl(), Location.class, vars).getStatus(), "OK");
+		Location location = restTemplate.getForObject(getGoogleSearchUrl(), Location.class, vars);
+		
+		Assert.assertEquals(location.getStatus(), "OK");
+		Assert.assertTrue(location.getResults().size() > 0);
+		Assert.assertNotNull(location.getResults().get(0).getGeometry().get("location").get("lat"));
+		Assert.assertNotNull(location.getResults().get(0).getGeometry().get("location").get("lng"));
 	}
 	
 	private String getGoogleSearchUrl(){

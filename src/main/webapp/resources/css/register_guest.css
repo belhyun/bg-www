@@ -1,0 +1,10 @@
+#find-location-modal .modal-body #location-map{
+	height:400px;
+}
+#find-location-modal .modal-body #location-map #map-canvas{
+	height:100%;
+	width:100%;
+}
+#find-location-modal .modal-body #location-map #map-canvas img{
+	max-height:inherit;
+}

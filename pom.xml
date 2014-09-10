@@ -181,5 +181,11 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.4.2</version>
 		</dependency>
+		<!-- JSON (JavaScript Object Notation) is a lightweight data-interchange format. -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
 	</dependencies>	
 </project>

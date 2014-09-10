@@ -1,18 +1,18 @@
 package com.bg.model;
 
-import java.util.List;
-
 import lombok.Data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown  = true)
-public class Location {
-	@JsonProperty
-	private String status;
+public class LocationDetail {
 	
 	@JsonProperty
-	private List<LocationDetail> results;
+	private double rating;
+	
+	@JsonProperty
+	private ObjectNode geometry;
 }

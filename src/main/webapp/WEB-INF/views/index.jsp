@@ -6,6 +6,7 @@
 <html lang="kr">
 <head>
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet"  type="text/css" />
+<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet"  type="text/css" />
 <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet"  type="text/css" />
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
