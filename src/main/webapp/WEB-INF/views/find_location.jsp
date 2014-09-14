@@ -13,6 +13,10 @@
 						<button id="find-location-btn" class="btn btn-warning" type="button">검색</button>
 					</span>
 				</div>
+				<div id="location-suggestions"">
+					<div class="panel-body">
+					</div>
+				</div>
 				<div id="location-map">
 					<div id="map-canvas"></div>
 				</div>

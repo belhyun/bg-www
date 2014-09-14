@@ -32,8 +32,7 @@ public class FormControllerTest {
 		
 		Assert.assertEquals(location.getStatus(), "OK");
 		Assert.assertTrue(location.getResults().size() > 0);
-		Assert.assertNotNull(location.getResults().get(0).getGeometry().get("location").get("lat"));
-		Assert.assertNotNull(location.getResults().get(0).getGeometry().get("location").get("lng"));
+		Assert.assertTrue(location.getResults().get(0).getName().equals("신림고등학교"));
 	}
 	
 	private String getGoogleSearchUrl(){
@@ -41,6 +40,6 @@ public class FormControllerTest {
 	}
 	
 	private String getApiKey(){
-		return "AIzaSyB9RRUrhdh5vF20Om7LGGBuwYEPci6ye9c";
+		return "AIzaSyCd8g41gqlpEGM2lchBKI_1mcH2MYqcXPY";
 	}
 }

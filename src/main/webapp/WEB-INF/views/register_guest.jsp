@@ -16,7 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="<c:url value="/resources/js/bootstrap-datepicker.js" />"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC5SJ-qtDMwP5Sq-Go_B61SxtAGf4Ynft8&sensor=false&v=3.exp"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCd8g41gqlpEGM2lchBKI_1mcH2MYqcXPY&sensor=false&v=3.exp"></script>
  
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -66,8 +66,8 @@ $('#dpd1').datepicker(); -->
 			    draggable: false,
 			    scrollwheel: false,
 			  };
-			  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-			  marker.setMap(map);
+			  //map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+			  //marker.setMap(map);
 			}());
 			return{ 
 				resizeMap : function(callback) {
@@ -77,12 +77,33 @@ $('#dpd1').datepicker(); -->
 					   map.setCenter(center);
 					   callback.call(callback);
 				   },1000);
+				},
+				search : function(query){
+					$.ajax({
+					   url:"/bg-www/location/search",
+					   type:"POST",
+					   data:{query:query},
+					   dataType: "json",
+					   success: function(resp){
+						   var html = "<table class=\"table\"><tbody>";
+						   _.each(resp,function(object){
+							  html += "<tr><td>";
+							  html += object.name+"("+object.formatted_address+")";
+							  html += "</td></tr>";
+						   });
+						   html += "</tbody></table>";
+						   $("#location-suggestions .panel-body").append(html);
+					   },
+					   error: function(resp){
+						   alert("일시적인 장애입니다.");
+					   }
+				   });
 				}
 			};
 		}());
 		$('#find-location-modal').on('show.bs.modal', function() {
-		   mapHandler.resizeMap(function(){
-		   });
+		   //mapHandler.resizeMap(function(){
+		   //});
 		});
 		
 		$("#find-location-btn").click(function(){
@@ -90,6 +111,7 @@ $('#dpd1').datepicker(); -->
 			if(_.string.isBlank(query)){
 				alert("장소를 입력해 주세요.");
 			}
+			mapHandler.search(query);
 		});
 	});
 </script>

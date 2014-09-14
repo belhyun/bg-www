@@ -1,5 +1,6 @@
 #find-location-modal .modal-body #location-map{
 	height:400px;
+	display:none;
 }
 #find-location-modal .modal-body #location-map #map-canvas{
 	height:100%;
@@ -7,4 +8,12 @@
 }
 #find-location-modal .modal-body #location-map #map-canvas img{
 	max-height:inherit;
+}
+.panel-body{
+	padding:0;
+}
+
+#location-suggestions .panel-body table tbody tr td:hover{
+	background-color:#ed9c28;
+	//opacity:0.05
 }
