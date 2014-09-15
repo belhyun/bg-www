@@ -32,4 +32,9 @@ public class LocationServiceImplTest {
 	public void 구글맵API에_장소정보가_없을경우(){
 		Assert.assertNotNull(locationService.getLocationDetailByUsingGoogleLocationSearchApi(""));
 	}
+	
+	@Test
+	public void 위치상세정보_정상출력(){
+		
+	}
 }

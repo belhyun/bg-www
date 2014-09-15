@@ -55,7 +55,7 @@ $('#dpd1').datepicker(); -->
 <script type="text/javascript">
 	$(document).ready(function(){
 		var mapHandler = (function(){
-			var map, center = new google.maps.LatLng(37.478383, 126.916895);
+			var map, center = new google.maps.LatLng(37.478383, 126.916895), latLngAry;
 			var marker=new google.maps.Marker({
 			    position:center
 			});
@@ -79,12 +79,14 @@ $('#dpd1').datepicker(); -->
 				   },1000);
 				},
 				search : function(query){
+					var that = this;
 					$.ajax({
 					   url:"/bg-www/location/search",
 					   type:"POST",
 					   data:{query:query},
 					   dataType: "json",
 					   success: function(resp){
+						   that.latLngAry = resp;
 						   var html = "<table class=\"table\"><tbody>";
 						   _.each(resp,function(object){
 							  html += "<tr><td>";
@@ -92,12 +94,15 @@ $('#dpd1').datepicker(); -->
 							  html += "</td></tr>";
 						   });
 						   html += "</tbody></table>";
-						   $("#location-suggestions .panel-body").append(html);
+						   $("#location-suggestions .panel-body table").replaceWith(html);
 					   },
 					   error: function(resp){
 						   alert("일시적인 장애입니다.");
 					   }
 				   });
+				},
+				getLatLngAry : function(){
+					return this.latLngAry;
 				}
 			};
 		}());
@@ -112,6 +117,10 @@ $('#dpd1').datepicker(); -->
 				alert("장소를 입력해 주세요.");
 			}
 			mapHandler.search(query);
+		});
+		
+		$(document).on("click", "#location-suggestions .panel-body table tbody tr", function(){
+			console.log(mapHandler.getLatLngAry());
 		});
 	});
 </script>

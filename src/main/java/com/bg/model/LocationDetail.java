@@ -16,6 +16,9 @@ public class LocationDetail {
 	private Double lng;
 	
 	@JsonProperty
+	private String id;
+	
+	@JsonProperty
 	private String name;
 	
 	@JsonProperty

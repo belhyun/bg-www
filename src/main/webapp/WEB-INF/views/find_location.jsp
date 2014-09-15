@@ -15,6 +15,7 @@
 				</div>
 				<div id="location-suggestions"">
 					<div class="panel-body">
+						<table></table>
 					</div>
 				</div>
 				<div id="location-map">
