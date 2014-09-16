@@ -21,6 +21,11 @@
 				<div id="location-map">
 					<div id="map-canvas"></div>
 				</div>
+				<!--
+				<div style="float:right;position:relative;top:15px">
+					<button id="location-select-complete" class="btn btn-warning" type="button">완료</button>
+				</div>
+				-->
 			</div>
 		</div>
 	</div>

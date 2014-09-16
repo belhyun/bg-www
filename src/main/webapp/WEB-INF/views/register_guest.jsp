@@ -55,20 +55,12 @@ $('#dpd1').datepicker(); -->
 <script type="text/javascript">
 	$(document).ready(function(){
 		var mapHandler = (function(){
-			var map, center = new google.maps.LatLng(37.478383, 126.916895), latLngAry;
-			var marker=new google.maps.Marker({
-			    position:center
-			});
-			(function initialize() {
-			  var mapOptions = {
-			    zoom: 17,
-			    center: center,
-			    draggable: false,
-			    scrollwheel: false,
-			  };
-			  //map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-			  //marker.setMap(map);
-			}());
+			var map, center, latLngAry, marker,
+			mapOptions = {
+		      zoom: 17,
+		      draggable: true,
+		      scrollwheel: true,
+		    }, test = 1;
 			return{ 
 				resizeMap : function(callback) {
 				   if(_.isUndefined(map)) return;
@@ -79,14 +71,13 @@ $('#dpd1').datepicker(); -->
 				   },1000);
 				},
 				search : function(query){
-					var that = this;
 					$.ajax({
 					   url:"/bg-www/location/search",
 					   type:"POST",
 					   data:{query:query},
 					   dataType: "json",
 					   success: function(resp){
-						   that.latLngAry = resp;
+						   latLngAry = resp;
 						   var html = "<table class=\"table\"><tbody>";
 						   _.each(resp,function(object){
 							  html += "<tr><td>";
@@ -102,7 +93,27 @@ $('#dpd1').datepicker(); -->
 				   });
 				},
 				getLatLngAry : function(){
-					return this.latLngAry;
+					return latLngAry;
+				},
+				hideGoogleMapCanvas : function(){
+					$("#location-map").css("display","none");
+				},
+				showGoogleMapCanvas : function(){
+					$("#location-map").css("display","block");
+				},
+				showGoogleMap : function(location){
+					center = new google.maps.LatLng(location.lat, location.lng);
+					mapOptions.center = center;
+					map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+					marker = new google.maps.Marker({
+					    position:center
+					});
+					marker.setMap(map);
+					google.maps.event.addListener(marker, 'click', function() {
+					    if(confirm(location.name+"을 선택하시겠습니까?")){
+					    	$("#find-location-modal").modal("hide");
+					    }
+					});
 				}
 			};
 		}());
@@ -116,11 +127,14 @@ $('#dpd1').datepicker(); -->
 			if(_.string.isBlank(query)){
 				alert("장소를 입력해 주세요.");
 			}
+			mapHandler.hideGoogleMapCanvas();
 			mapHandler.search(query);
 		});
 		
 		$(document).on("click", "#location-suggestions .panel-body table tbody tr", function(){
-			console.log(mapHandler.getLatLngAry());
+			mapHandler.showGoogleMapCanvas();
+			mapHandler.showGoogleMap(mapHandler.getLatLngAry()[$("#location-suggestions .panel-body table tbody tr").index(this)]);
+			$("#location-suggestions .panel-body table").children().remove();
 		});
 	});
 </script>
