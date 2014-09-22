@@ -1,12 +1,8 @@
 package com.bg.service.impl;
 
 import java.io.IOException;
-
-import javax.validation.constraints.AssertTrue;
-
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

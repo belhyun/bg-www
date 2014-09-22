@@ -11,12 +11,16 @@
 <link href="<c:url value="/resources/css/register_guest.css" />" rel="stylesheet"  type="text/css" />
 <link href="<c:url value="/resources/css/datepicker.css" />" rel="stylesheet"  type="text/css" />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="<c:url value="/resources/js/bootstrap-datepicker.js" />"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCd8g41gqlpEGM2lchBKI_1mcH2MYqcXPY&sensor=false&v=3.exp"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCT0fF-XHih9IP0Eyp11DsOnjNQp_CLY0Y&sensor=false&v=3.exp"></script>
+<script type="text/javascript" src="/bg-www/resources/bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="/bg-www/resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bg-www/resources/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="/bg-www/resources/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/bg-www/resources/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
  
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -34,7 +38,14 @@
 				<form:form name="registerGuestForm" id="form" method="post" modelAttribute="guest">
 				    <div class="form-group">
 				      <section>
-					      <form:input path="" type="text" class="form-control" placeholder="장소" data-toggle="modal" data-target="#find-location-modal" style="width:inherit;"/>
+					      <form:input path="" type="text" id="selected-location" class="form-control" placeholder="장소" data-target="#find-location-modal" style="width:inherit;"/>
+					      <form:input path="" type="text" id="start-selected-date" class="form-control" placeholder="시작일자" style="width:inherit;"/>
+					      <div class='input-group date' id='datetimepicker1'>
+			                  <input type='text' class="form-control" />
+			                  <span class="input-group-addon">
+			                  	<span class="glyphicon glyphicon-calendar"></span>
+			                  </span>
+			              </div>
 				      </section>
 				      <section id="">
 				      	  <!--
@@ -49,9 +60,6 @@
 		 </div>
 	</div>
 </div>
-<!--datepicker
-<input type="text" class="span2" value="" id="dpd1" >
-$('#dpd1').datepicker(); -->
 <script type="text/javascript">
 	$(document).ready(function(){
 		var mapHandler = (function(){
@@ -111,12 +119,18 @@ $('#dpd1').datepicker(); -->
 					marker.setMap(map);
 					google.maps.event.addListener(marker, 'click', function() {
 					    if(confirm(location.name+"을 선택하시겠습니까?")){
+					    	$("#selected-location").val(location.name);
 					    	$("#find-location-modal").modal("hide");
 					    }
 					});
 				}
 			};
 		}());
+		$('[data-target=#find-location-modal]').click(function(e){
+			e.preventDefault();
+			$("#find-location-modal").modal('show');
+		});
+		
 		$('#find-location-modal').on('show.bs.modal', function() {
 		   //mapHandler.resizeMap(function(){
 		   //});
@@ -136,6 +150,10 @@ $('#dpd1').datepicker(); -->
 			mapHandler.showGoogleMap(mapHandler.getLatLngAry()[$("#location-suggestions .panel-body table tbody tr").index(this)]);
 			$("#location-suggestions .panel-body table").children().remove();
 		});
+		
+		$(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
 	});
 </script>
 </body>

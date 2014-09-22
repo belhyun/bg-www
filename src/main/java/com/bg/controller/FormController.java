@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bg.model.Guest;
+import com.bg.model.Recruitment;
 
 @Controller
 @RequestMapping("/form")
 public class FormController {
 	
 	@ModelAttribute("guest")
-	public Guest createGuest(){
-		return new Guest();
+	public Recruitment createGuest(){
+		return new Recruitment();
 	}
 	
 	@RequestMapping(value = "registerGuest", method=RequestMethod.GET)

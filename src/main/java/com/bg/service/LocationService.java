@@ -13,6 +13,6 @@ abstract public class LocationService {
 	}
 	
 	protected String getApiKey(){
-		return "AIzaSyCd8g41gqlpEGM2lchBKI_1mcH2MYqcXPY";
+		return "AIzaSyCT0fF-XHih9IP0Eyp11DsOnjNQp_CLY0Y";
 	}
 }
