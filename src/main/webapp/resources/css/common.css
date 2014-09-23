@@ -1,3 +1,9 @@
+body{
+	background-color:#ffffff;
+	font-family:Dotum,돋움,Helvetica,AppleSDGothicNeo,sans-serif;
+	font-size:12px;
+	color:#383d41;
+}
 #wrap{
 	position:relative;
 	min-height:100%;
@@ -12,4 +18,13 @@
 }
 a{
 	text-decoration:none;
+}
+.header{
+	margin:0;
+	line-height:61px;
+	height:55px;
+	font-size:18px;
+	padding-left:30px;
+	border-bottom:1px solid #ddd;
+	border-top:4px solid #ec971f;
 }

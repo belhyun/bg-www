@@ -28,6 +28,7 @@
 </head>
 <body>
 <div id="wrap">
+	<%@ include file="header.jsp" %>
 	<div id="container">
 		<%@ include file="find_location.jsp" %>
 		<div id="register-guest-form">
@@ -38,14 +39,94 @@
 				<form:form name="registerGuestForm" id="form" method="post" modelAttribute="guest">
 				    <div class="form-group">
 				      <section>
-					      <form:input path="" type="text" id="selected-location" class="form-control" placeholder="장소" data-target="#find-location-modal" style="width:inherit;"/>
-					      <form:input path="" type="text" id="start-selected-date" class="form-control" placeholder="시작일자" style="width:inherit;"/>
-					      <div class='input-group date' id='datetimepicker1'>
-			                  <input type='text' class="form-control" />
-			                  <span class="input-group-addon">
-			                  	<span class="glyphicon glyphicon-calendar"></span>
-			                  </span>
-			              </div>
+				      	  <div>
+					      	<form:input path="" type="text" id="selected-location" class="form-control" placeholder="장소" data-target="#find-location-modal"/>
+					      </div>
+					      <div class='input-group date' id="start-date">
+					      	<form:input path="" type="text" id="start-selected-date" class="form-control" placeholder="시작일자"/>
+					      	<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+					      </div>
+					      <div class='input-group date' id="end-date">
+					      	<form:input path="" type="text" id="start-end-date" class="form-control" placeholder="종료일자"/>
+					      	<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+					      </div>
+					      <div>
+					      	<form:input path="" type="text" id="guest-fee" class="form-control" placeholder="게스트비"/>
+					      </div>
+					      <div>
+					      	<form:textarea path="" type="text" id="requirements" class="form-control" placeholder="요구사항"/>
+					      </div>
+					      <div>
+					      	<form:input path="" type="text" id="phone" class="form-control" placeholder="전화번호(대표자 번호)"/>
+					      </div>
+					      <div>
+					      	<h5>모집포지션</h5><hr/>
+					      	<table class="table table-bordered">
+							  <tr>
+							  	<td>센터</td>
+							  	<td>
+								  	<select class="form-control">
+									  <option>1</option>
+									  <option>2</option>
+									  <option>3</option>
+									  <option>4</option>
+									  <option>5</option>
+									</select>
+							  	</td>
+							  </tr>
+							  <tr>
+							  	<td>파워포워드</td>
+							  	<td>
+								  	<select class="form-control">
+									  <option>1</option>
+									  <option>2</option>
+									  <option>3</option>
+									  <option>4</option>
+									  <option>5</option>
+									</select>
+							  	</td>
+							  </tr>
+							  <tr>
+							  	<td>스몰포워드</td>
+							  	<td>
+								  	<select class="form-control">
+									  <option>1</option>
+									  <option>2</option>
+									  <option>3</option>
+									  <option>4</option>
+									  <option>5</option>
+									</select>
+							  	</td>
+							  </tr>
+							  <tr>
+							  	<td>슈팅가드</td>
+							  	<td>
+								  	<select class="form-control">
+									  <option>1</option>
+									  <option>2</option>
+									  <option>3</option>
+									  <option>4</option>
+									  <option>5</option>
+									</select>
+							  	</td>
+							  </tr>
+							  <tr>
+							  	<td>포인트가드</td>
+							  	<td>
+								  	<select class="form-control">
+									  <option>1</option>
+									  <option>2</option>
+									  <option>3</option>
+									  <option>4</option>
+									  <option>5</option>
+									</select>
+							  	</td>
+							  </tr>
+							</table>
+					      </div>	
+					      <div>
+					      	<button type="submit" class="btn btn-warning">등록</button>
+					      </div>				      
 				      </section>
 				      <section id="">
 				      	  <!--
@@ -150,10 +231,21 @@
 			mapHandler.showGoogleMap(mapHandler.getLatLngAry()[$("#location-suggestions .panel-body table tbody tr").index(this)]);
 			$("#location-suggestions .panel-body table").children().remove();
 		});
+		(function initDate(){
+			$('#start-date').datetimepicker({
+				pick12HourFormat: false
+	        });
+			$('#end-date').datetimepicker({
+				pick12HourFormat: false
+	        });
+		})();
 		
-		$(function () {
-            $('#datetimepicker1').datetimepicker();
-        });
+		$("#start-date").click(function(){
+			$('#start-date').data("DateTimePicker").show();
+		});
+		$("#end-date").click(function(){
+			$("#end-date").data("DateTimePicker").show();
+		});
 	});
 </script>
 </body>
