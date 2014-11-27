@@ -8,7 +8,7 @@ import com.bg.resource.Message;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 
-public abstract class AbstractDaoImpl implements AbstractDao{
+public abstract class AbstractDaoImpl{
 	
 	@Autowired
 	protected	HibernateTemplate hibernateTemplate;

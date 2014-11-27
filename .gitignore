@@ -2,3 +2,6 @@
 /WebContent
 /bin
 /.settings
+/.target
+/.idea
+/bg-www.iml

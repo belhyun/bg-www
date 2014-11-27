@@ -1,6 +1,7 @@
 package com.bg.dao.impl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -66,7 +67,7 @@ public class RecruitmentDaoImplTest {
 		recruitment.setGuests(guests);
 		
 		Long id = recruitmentDao.create(recruitment);
-		
+
 		Assert.assertThat(recruitmentDao.findById(id).getId(), is(equalTo(id)));
 	}
 }

@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">구인등록</a>
+                <a href="/form/registerGuest">구인등록</a>
             </li>
             <li>
                 <a href="#">승인현황</a>

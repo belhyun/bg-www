@@ -31,10 +31,10 @@
 		      <form:input path="pwd" type="text" class="form-control" placeholder="비밀번호" id="pwd"/>
 	      </section>
 	      <section id="auth-button">
-		      <button class="btn btn-warning btn-large" id="signin" onclick="memberForm.action='/bg-www/signin';return true;">
+		      <button class="btn btn-warning btn-large" id="signin" onclick="memberForm.action='/signin';return true;">
 		       	로그인
 		      </button>
-		      <button class="btn btn-warning btn-large"  id="signup" onclick="memberForm.action='/bg-www/signup';return true;">
+		      <button class="btn btn-warning btn-large"  id="signup" onclick="memberForm.action='/signup';return true;">
 		       	가입
 		      </button>
 	      </section>
